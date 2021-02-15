@@ -1,11 +1,11 @@
 <div style="display: block;">
-	<label> select id to change: 
+	<!-- <label> select id to change: 
 	<select [(ngModel)]="selectedValue" name="food" (change)="getselectedValue()" >
 		<option *ngFor="let id of annotationsIds" [value]="id">
 			{{id}}
 		</option>
 
-	</select>
+	</select> -->
 	<br><br>
 	<div *ngIf="selectedValue != null">
 		<input matInput placeholder="X min" [(ngModel)]="exist_x_min"> &nbsp;
@@ -14,11 +14,11 @@
 		<input matInput placeholder="Y max" [(ngModel)]="exist_y_max"> <br> <br>
 		<button (click)="add_y_axis()"> Change selected annotation value</button>
 	</div>
-<br><br>
+	<br><br>
 	<button (click)="add_new_annotation()"> + Add </button><br>
 
-  	<div *ngIf="add_annotation">
-      <br>
+	<div *ngIf="add_annotation">
+		<br>
 		<input matInput placeholder="X min" [(ngModel)]="exist_x_min2"> &nbsp;
 		<input matInput placeholder="X max" [(ngModel)]="exist_x_max2"> <br><br>
 		<input matInput placeholder="y min" [(ngModel)]="exist_y_min2"> &nbsp;

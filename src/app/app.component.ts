@@ -49,6 +49,7 @@ export class AppComponent {
   }
 
   get_chart() {
+    let that = this;
     this.chart1 = new Chart("canvas1", {
       type: this.lineChartType,
       data: {
@@ -64,6 +65,7 @@ export class AppComponent {
       options: {
         responsive: true,
         annotation: {
+          events: ["click"],
           drawTime: "afterDatasetsDraw",
           annotations: [
             {
@@ -78,8 +80,14 @@ export class AppComponent {
               borderWidth: 1,
               backgroundColor: "yellow",
               borderColor: "yellow",
-              click: function(e) {
-                console.log(e);
+              onClick: function(e) {
+                let element = this;
+                console.log(element.options.id);
+                that.selectedValue = element.options.id;
+                that.exist_x_min = element.options.xMin;
+                that.exist_x_max = element.options.xMax;
+                that.exist_y_min = element.options.yMin;
+                that.exist_y_max = element.options.yMax;
               }
             }
           ]
@@ -87,14 +95,14 @@ export class AppComponent {
       },
       legend: this.lineChartLegend
     });
-    this.get_select_list();
+    // this.get_select_list();
   }
 
-  get_select_list() {
-    this.annotationsIds = this.chart1.options.annotation.annotations.map(
-      e => e.id
-    );
-  }
+  // get_select_list() {
+  //   this.annotationsIds = this.chart1.options.annotation.annotations.map(
+  //     e => e.id
+  //   );
+  // }
 
   display_new_annotation() {
     let len = this.chart1.options.annotation.annotations.length + 1;
@@ -119,7 +127,7 @@ export class AppComponent {
     };
     this.chart1.options.annotation.annotations.push(annObj);
     this.chart1.chart.update();
-    this.get_select_list();
+    //this.get_select_list();
     console.log(this.chart1.options.annotation.annotations);
     this.add_annotation = false;
     this.exist_x_min2 = null;

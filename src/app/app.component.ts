@@ -95,17 +95,10 @@ export class AppComponent {
       },
       legend: this.lineChartLegend
     });
-    // this.get_select_list();
   }
 
-  // get_select_list() {
-  //   this.annotationsIds = this.chart1.options.annotation.annotations.map(
-  //     e => e.id
-  //   );
-  // }
-
   display_new_annotation() {
-    let that = this
+    let that = this;
     let len = this.chart1.options.annotation.annotations.length + 1;
     let annObj = {
       type: "box",
@@ -118,14 +111,15 @@ export class AppComponent {
       xMax: this.exist_x_max2.toString(),
       borderWidth: 1,
       backgroundColor: "pink",
-      borderColor: "pink", onClick: function(e) {
-                let element = this;
-                that.selectedValue = element.options.id;
-                that.exist_x_min = element.options.xMin;
-                that.exist_x_max = element.options.xMax;
-                that.exist_y_min = element.options.yMin;
-                that.exist_y_max = element.options.yMax;
-              }
+      borderColor: "pink",
+      onClick: function(e) {
+        let element = this;
+        that.selectedValue = element.options.id;
+        that.exist_x_min = element.options.xMin;
+        that.exist_x_max = element.options.xMax;
+        that.exist_y_min = element.options.yMin;
+        that.exist_y_max = element.options.yMax;
+      }
     };
     this.chart1.options.annotation.annotations.push(annObj);
     this.chart1.chart.update();
@@ -141,23 +135,7 @@ export class AppComponent {
   add_new_annotation() {
     this.add_annotation = true;
   }
-
-  getselectedValue() {
-    console.log(this.selectedValue);
-    let idGraphAnnoObj = this.chart1.options.annotation.annotations.filter(
-      e => e.id == this.selectedValue
-    );
-    console.log(idGraphAnnoObj[0]);
-    this.exist_x_min = idGraphAnnoObj[0].xMin;
-    this.exist_x_max = idGraphAnnoObj[0].xMax;
-    this.exist_y_min = idGraphAnnoObj[0].yMin;
-    this.exist_y_max = idGraphAnnoObj[0].yMax;
-  }
-
   add_y_axis() {
-    console.log("added y_annotation");
-    // this.y_min = 40;
-    // this.y_max = 45;
     let indexAn = this.chart1.options.annotation.annotations.findIndex(
       e => e.id == this.selectedValue
     );

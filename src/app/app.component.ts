@@ -105,6 +105,7 @@ export class AppComponent {
   // }
 
   display_new_annotation() {
+    let that = this
     let len = this.chart1.options.annotation.annotations.length + 1;
     let annObj = {
       type: "box",
@@ -117,13 +118,14 @@ export class AppComponent {
       xMax: this.exist_x_max2.toString(),
       borderWidth: 1,
       backgroundColor: "pink",
-      borderColor: "pink",
-      label: {
-        fontSize: 16,
-        fontColor: "black",
-        content: "test label",
-        enabled: true
-      }
+      borderColor: "pink", onClick: function(e) {
+                let element = this;
+                that.selectedValue = element.options.id;
+                that.exist_x_min = element.options.xMin;
+                that.exist_x_max = element.options.xMax;
+                that.exist_y_min = element.options.yMin;
+                that.exist_y_max = element.options.yMax;
+              }
     };
     this.chart1.options.annotation.annotations.push(annObj);
     this.chart1.chart.update();

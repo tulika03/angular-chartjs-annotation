@@ -77,9 +77,9 @@ export class AppComponent {
               yMax: 77,
               xMin: "1",
               xMax: "3",
+              backgroundColor: "rgba(255, 255, 0, 0.3)",
               borderWidth: 1,
-              backgroundColor: "yellow",
-              borderColor: "yellow",
+              borderColor: "rgba(255, 255, 0, 0.4)",
               onClick: function(e) {
                 let element = this;
                 console.log(element.options.id);
@@ -110,8 +110,8 @@ export class AppComponent {
       xMin: this.exist_x_min2.toString(),
       xMax: this.exist_x_max2.toString(),
       borderWidth: 1,
-      backgroundColor: "pink",
-      borderColor: "pink",
+      backgroundColor: "rgba(255, 0, 0, 0.2)",
+      borderColor: "rgba(255, 0, 0, 0.3)",
       onClick: function(e) {
         let element = this;
         that.selectedValue = element.options.id;
